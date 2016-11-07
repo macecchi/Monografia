@@ -27,7 +27,7 @@
   \def\equationname{Equa\c{c}\~{a}o}%
   \def\lstlistingname{C{\'o}digo}%
   \def\tablename{Tabela}%
-  \def\advisorname{Orientador}%
+  \def\advisorname{Orientadora}%
   \def\coadvisorname{Co-orientador}%
   \def\listabbrvname{Lista de Abreviaturas e Siglas}%
   \def\listsymbolname{Lista de S{\'i}mbolos}%

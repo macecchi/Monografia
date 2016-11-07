@@ -1,0 +1,43 @@
+\chapter{Introdução}\label{chp:CAP_INTRO}
+
+Nos últimos anos, vivemos um momento de crescente participação popular na política brasileira. Com a crescente demanda por transparência na gestão pública, os governos assumem o compromisso de tornar públicos, através da internet, os dados de suas gestões - como arrecadações, gastos, licitações e dados de serviços públicos. Surge então um meio capaz de diminuir as barreiras para que a população fiscalize a atuação dos nossos representantes.
+
+Entre os compromissos da transparência, está a disponibilização de dados abertos governamentais (DAGs), que consiste na distribuição de qualquer tipo de dado em posse do poder público em formatos que permitem qualquer cidadão consultar, analisar, se apropriar e redistribuí-los de maneira livre. Esses dados permitem não só uma maior fiscalização da administração pública, como também permitem que indivíduos e organizações possam utilizá-los para construir ferramentas de valor à sociedade.
+
+No município do Rio de Janeiro, entre os diversos dados abertos oferecidos, estão os dados de transporte e mobilidade, que incluem informações sobre linhas de ônibus, metrô, trem, bicicletários e ocorrências de trânsito. Neste trabalho, serão utilizados os dados disponibilizados das linhas de ônibus municipais, que incluem informações dos GPS dos ônibus, a fim de observar o comportamento desses veículos e analisar o funcionamento desse serviço público na cidade.
+
+
+\section{Objetivos}\label{sec:CAP_INTRO_OBJETIVOS}
+
+O objetivo deste trabalho é elaborar uma ferramenta para o cidadão carioca poder fiscalizar a qualidade de serviço do transporte público rodoviário da sua cidade, através da análise dos dados reais obtidos pelos DAGs locais. Tal ferramenta permite ao usuário acessar relatórios diversos para auxiliar na compreensão desse serviço público prestado. Este trabalho foca no desenvolvimento de duas análises específicas: a densidade de ônibus por região e a frequência média dos ônibus de cada linha. 
+
+A primeira análise foi selecionada devido à uma reflexão dos cariocas: "Por que há lugares que possuem tantos ônibus e outros que não são atendidos por nenhuma linha?". O estudo proposto serve para expor esse grande contraste e desigualdade presentes na cidade.
+
+Já a segunda análise foi inspirada por uma das maiores dúvidas de qualquer usuário de ônibus: "Quanto tempo vai demorar para o meu ônibus chegar?". Para ajudar a responder esta pergunta, calcularemos os intervalos entre cada ônibus ao longo de um período, comprovando qual é o tempo médio de espera por cada linha. 
+
+%Além disso, para tornar-se viável o segundo estudo, foi desenvolvido um algoritmo capaz de identificar o sentido (ida ou volta) dos ônibus. Tal algoritmo também será apresentado neste trabalho
+
+
+\section{Motivação}\label{sec:CAP_INTRO_MOTIVACAO}
+
+A ideia para este trabalho surgiu durante minha participação no Rio Bus\cite{riobus_sc} - um aplicativo móvel desenvolvido na Universidade Federal do Rio de Janeiro que utiliza DAGs para informar a localização dos ônibus de cada linha do Rio de Janeiro, servindo como grande utilitário para o usuário de ônibus carioca.
+
+Esses usuários, muitas vezes por engano, enviavam para nós reclamações sobre o serviço dos ônibus - algo sobre o qual não temos responsabilidade. No entanto, pensamos em uma maneira de ajudar: fornecendo ao usuário relatórios de funcionamento dos ônibus e munindo-o com informações concretas para que possa enviar suas reclamações aos órgãos fiscalizadores.
+
+Em paralelo, também houve uma procura pelos dados dos ônibus armazenados no Rio Bus por políticos que promoviam a CPI dos Ônibus\cite{cpi_dos_onibus}. Estes buscavam uma fonte alternativa aos burocráticos processos legais que fosse capaz de fornecer relatórios como evidência do descumprimento dos contratos por parte das concessionárias que operam as linhas de ônibus. Este foi um dos diversos pontos questionados na CPI, buscando apurar a eficácia dos instrumentos de controle das metas estabelecidas nos contratos com essas empresas.
+
+Assim, graças ao transporte público extremamente deficiente do Rio de Janeiro e essa demanda por informação - que, idealmente, deveria ser pública - decidi desenvolver este projeto para tentar contribuir, de alguma maneira, com a melhoria desse essencial serviço. 
+
+Ainda que não esteja em minhas mãos garantir que os usuários irão fazer uso desses dados para reivindicar seus direitos - e muito menos garantir que essas melhorias serão feitas - gostaria de contribuir com ferramentas que possam auxiliar isso. Além disso, todos os estudos e algoritmos desenvolvidos durante este projeto são \textit{open-source}, ou seja, de domínio público\footnote{"Código aberto, ou open source em inglês, é um modelo de desenvolvimento que promove um licenciamento livre para o design ou esquematização de um produto, e a redistribuição universal desse design ou esquema, dando a possibilidade para que qualquer um consulte, examine ou modifique o produto", de acordo com \cite{REF_OPEN_SOURCE}.}.
+
+
+\section{Trabalhos relacionados}\label{sec:CAP_INTRO_TRABALHOS_RELACIONADOS}
+
+Trabalhos anteriores buscaram analisar a definição e os impactos dos dados abertos na sociedade. Em \cite{REF_OGD_AND_IMPACT}, o autor descreve os fundamentos dos DAGs em quatro interpretações - como um direito, como movimento e como política - e analisa os impactos causados na \textit{accountability}, na melhoria dos serviços públicos e no crescimento econômico. Em \cite{REF_MONO_BUUS}, o autor traz um estudo de caso do Buus, uma empresa do Rio de Janeiro que faz uso dos mesmos DAGs que utilizaremos e que acompanhou o processo de abertura dos dados pela Prefeitura do Rio. São estudadas na prática as dificuldades e consequências dos usos desses dados, assim como diferentes modelos de negócios testados durante o desenvolvimento.
+
+O próprio Google também possui ferramentas que fazem uso dos DAGs do Rio de Janeiro. Sua principal ferramenta de navegação, o Google Maps, oferece informações sobre o transporte público do Rio e estimativas do tempo de chegada de ônibus próximos\footnote{"Ônibus do Rio de Janeiro aparecem no Google Maps em tempo real", TechTudo, 11/04/2016,  http://www.techtudo.com.br/noticias/noticia/2016/04/onibus-do-rio-de-janeiro-aparecem-no-google-maps-em-tempo-real.html}. Entretanto, esse serviço difere do desenvolvido neste trabalho pois o mesmo utiliza apenas uma estimativa futura para os ônibus mais próximos durante a pesquisa, enquanto este projeto faz a análise histórica dos dados e, portanto, efetiva dos ônibus. Além disso, este projeto torna possível a análise retroativa sobre qualquer período anterior, enquanto na ferramenta norte-americana só é possível consultar para o instante de tempo atual.
+
+
+\section{Estrutura e metodologia}\label{sec:CAP_INTRO_ESTRUTURA}
+
+No capítulo \ref{chp:CAP_CONCEITOS}, são apresentados alguns dos conceitos fundamentais que cercam o projeto, como Dados Abertos e seu contexto no cenário em que estamos interessados - os Dados Abertos Governamentais. No capítulo \ref{chp:CAP_RIOBUS}, apresentaremos o cenário do Rio Bus, projeto que serviu como base para as pesquisas desenvolvidas, explicando como foram obtidos, armazenados e manipulados os dados que utilizamos. O capítulo \ref{chp:CAP_ANALISE} apresenta as análises sobre os dados, incluindo suas implementações e os resultados observados. O capítulo \ref{chp:CAP_CONCLUSOES} contém as conclusões finais sobre o projeto e trabalhos futuros.

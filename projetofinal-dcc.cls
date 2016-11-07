@@ -26,6 +26,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{indentfirst}      %identa primeiro parágrafo
 \RequirePackage{graphicx}         %imagens
+\RequirePackage[font=scriptsize]{caption}
 \RequirePackage{amsmath}          %formulas matemáticas
 \RequirePackage{hyperref}         %referências
 \RequirePackage{fancyhdr}         %manipulação de header e footer
@@ -247,7 +248,11 @@
     \clearpage
     \thispagestyle{empty}
     \bigskip
-    \centerline{\textbf{\large\@title}}
+    \begingroup
+      \leftskip=0cm plus 0.5fil \rightskip=0cm plus -0.5fil
+      \parfillskip=0cm plus 1fil
+      \textbf{\large\@title}\par
+    \endgroup
     \bigskip
     \centerline{\textbf{\@authora}}
     \@ifundefined{@authorb}{}{
@@ -341,7 +346,7 @@
     \normalsize
 
     \noindent
-    Orientador: \@advisorname\\
+    Orientadora: \@advisorname\\
     \@advisororigin\\
 
     \renewcommand{\baselinestretch}{1.5}
@@ -463,7 +468,7 @@
 % Definição do conteúdo de listas de abreviaturas e símbolos
 %=====================================================================
 \newcommand{\makeabrevpage}[1]{
-  \begin{listofabbrv}{XXXXXX}
+  \begin{listofabbrv}{XXXXXXXXXXX}
     #1
   \end{listofabbrv}
   \pagebreak

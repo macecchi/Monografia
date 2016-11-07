@@ -1,0 +1,39 @@
+\chapter{Conclusões}\label{chp:CAP_CONCLUSOES}
+
+Com os estudos realizados, foi possível construir mais uma prova de como os DAGs podem ser úteis à sociedade. As duas análises desenvolvidas são exemplos de como esse tipo de ferramenta pode ser usada para ampliar a transparência de serviços como o transporte público. Porém, ao mesmo tempo que temos que agradecer pela disponibilidade desses dados públicos, ainda há muito o que se reivindicar no que diz respeito à qualidade e à cobertura dos dados fornecidos, visto que existem diversos problemas que foram observados durante os estudos.
+
+Foram identificadas algumas dificuldades em relação à confiabilidade dos dados coletados, uma vez que a base de dados que utilizamos da Prefeitura não possui informações completas sobre as linhas. Além disso, também há uma enorme quantidade de dados desatualizados, o que impede a execução correta dos algoritmos para a análise, causando a disponibilização de informações incorretas à população que utiliza serviços como o Rio Bus, por exemplo. 
+
+Há alguns exemplos de como tais problemas afetaram este estudo:
+
+\begin{itemize}
+    \item Diversas linhas em circulação não possuem informações sobre seu itinerário, um dos dados oferecidos pelo Data.rio, enquanto diversas outras possuem itinerários desatualizados. Sem esses dados não há uma referência para a comparação das linhas através de algoritmos.
+    \item Assim como o itinerário, faltam informações sobre os pontos de parada ou estão desatualizadas em diversas linhas, o que impede a execução da análise da frequência dos ônibus ou causa resultados não confiáveis.
+    \item Mudanças que não existiam ou que ocorriam em menor escala nas linhas de ônibus no Rio de Janeiro ocorreram com grande frequência no último ano, dificultando os estudos, tais como a mudança de 180 linhas que passam pelo Centro do Rio em maio de 2016\cite{noticia_centro_mudancas} e o plano de racionalização das linhas, que reduziu de 123 para 45 as linhas que passam pela Zona Sul do Rio\cite{noticia_racionalizacao}.
+    \item Não é informado pelos DAGs qual o sentido do ônibus em cada instante, o que acaba tendo de ser calculado manualmente para que essa informação seja usada para calcular com maior precisão o tempo de espera em cada parada.
+    \item Há falhas frequentes na transmissão dos dados de posição dos ônibus, com linhas ou até mesmo consórcios inteiros\footnote{As empresas de ônibus que operam no Rio de Janeiro são agrupadas em 4 diferentes consórcios - Internorte, Intersul, Transcarioca e Santa Cruz - que operam em diferentes áreas da cidade. Fonte: Rio Ônibus (http://www.rioonibus.com/rio-onibus/consorcios-e-empresas/). Acessado em outubro de 2016.} que "desaparecem" \textit{} durante períodos, conforme observado em 2015, quando o consórcio Internorte ficou meses sem transmitir dados de todas as suas linhas.
+    \item A própria API do Data.rio possui problemas, ocasionalmente ficando indisponível sem nenhum aviso prévio e alterando o contrato de seus serviços sem a documentação apropriada, o que causou interrupções e falhas na coleta dos dados.
+\end{itemize}
+
+Devido aos problemas relatados anteriormente, a complexidade do trabalho se tornou maior, pois foi necessário elaborar soluções além do escopo inicial para que se obtivesse maior confiabilidade dos resultados, causando interrupções no desenvolvimento dos estudos e criando limitações nas linhas que poderiam ser analisadas.
+
+Outros problemas encontrados foram em relação ao armazenamento dos dados e à complexidade de processamento dos mesmos. Com a enorme quantidade de dados produzida a cada dia, armazenar dados históricos localmente tornou-se um problema em diversos aspectos, como o uso de espaço em disco, a disponibilidade de servidores capazes de colher esses dados ininterruptamente e a complexidade de processamento dos dados. Embora a infraestrutura do Rio Bus e seus serviços, de código aberto, tenham ajudado nesse aspecto, ainda dependíamos de serviços externos como o Google BigQuery para consultar esses dados históricos, o que gerou custos e mais um nível de dependência.
+
+Quanto à complexidade de processamento, processar dados de longos períodos ou de muitas linhas simultaneamente foi bastante demorado. Por este motivo, o estudo da frequência dos ônibus no escopo deste trabalho limitou-se a apenas uma linha e a um dia por vez, embora pudesse ser otimizado para análises mais elaboradas.
+
+Apesar de todos os desafios encontrados, a ferramenta desenvolvida serviu como uma prova de conceito de que é possível utilizar os DAGs como instrumento para a fiscalização do serviço de transporte no Rio. Com as análises desenvolvidas, foi possível observar que o serviço prestado deixa muito a desejar, e como as mudanças nos planos de transporte da cidade afetam a disponibilidade das linhas.
+
+Ainda que o objetivo inicial deste trabalho propusesse uma facilidade maior de acesso às estatísticas coletadas, todos os algoritmos desenvolvidos durante os estudos foram disponibilizados no GitHub\footnote{GitHub: site que permite que as pessoas hospedem e compartilhem códigos versionados, e concentra o maior número de projetos open-source disponíveis, com uma enorme comunidade de contribuidores. (https://github.com)}, podendo ser executados, modificados ou redistribuídos por qualquer um, assim como o código do Rio Bus, que serviu como uma útil ferramenta para a coleta dos dados abertos.
+
+
+\section{Trabalhos futuros}
+
+Apesar de o projeto ter sofrido limitações devido à base de dados utilizada, suas propostas e algoritmos podem ser facilmente reproduzidos em outras bases de dados, servindo a diferentes propósitos e podendo ser facilmente estendidos e aprimorados para outros meios de transporte.
+
+Substituindo a base de dados utilizada, é possível reproduzir os estudos em diferentes cidades que disponibilizam os dados dos ônibus como DAGs e até mesmo em diferentes meios de transportes. Embora o estudo tenha sido pensado com o funcionamento dos ônibus públicos, as mesmas análises podem ser aplicadas a frotas de ônibus privados, táxis, carros ou caminhões. Um serviço de monitoramento e de relatórios gerenciais de frota pode ser aplicado para fins comerciais e oferecido a cooperativas, transportadoras e empresas de ônibus, como é apontado por \cite{REF_MONO_BUUS}.
+
+Com a infraestrutura adequada, o cálculo das análises também pode ser automatizado para que, por exemplo, a frequência de cada linha seja calculada ao final de cada dia. Dessa maneira, os estudos desenvolvidos podem se tornar ainda mais completos, e os resultados podem ser disponibilizados em uma página abrangendo todas as linhas de ônibus.
+
+O algoritmo de análise da frequência também pode ser explorado com outras abordagens de implementação, como, por exemplo, aprimorando o paralelismo do algoritmo. Tal mudança melhoraria o desempenho de processamento, algo especialmente importante caso se queira analisar o conjunto de todas as linhas de maneira eficiente.
+
+Ainda visando uma ferramenta pública para a consulta desses dados, pode ser criado um repositório contendo as diferentes análises propostas, para que qualquer cidadão possa consultá-las, mesmo sem possuir conhecimento técnico.

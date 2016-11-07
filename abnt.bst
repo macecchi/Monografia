@@ -271,7 +271,8 @@ FUNCTION {format.ineditors}
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title "t" change.case$ }
+%    { title "t" change.case$ }
+    { title }
   if$
 }
      
@@ -750,6 +751,8 @@ FUNCTION {inproceedings}
       format.number.series output
       organization output
       publisher output
+      address output
+      format.date "year" output.check
     }
     { format.incoll.inproc.crossref output.nonnull }
   if$
@@ -1097,8 +1100,9 @@ FUNCTION {presort}
   #1 entry.max$ substring$
   'sort.key$ :=
 }
-     
-ITERATE {presort}
+ 
+%sort by alphabetical order of authors    
+%ITERATE {presort}
      
 SORT
      
