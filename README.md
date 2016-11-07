@@ -1,5 +1,5 @@
 # Análises do transporte público rodoviário no Rio de Janeiro através de Dados Abertos
-Projeto Final de Curso submetido ao Departamento de Ciência da Computação do Instituto de Matemática da Universidade Federal do Rio de Janeiro como parte dos requisitos necessários para obtenção do grau de Bacharel em Informática.
+Projeto Final de Curso submetido ao Departamento de Ciência da Computação (DCC) do Instituto de Matemática (IM) da Universidade Federal do Rio de Janeiro (UFRJ) como parte dos requisitos necessários para obtenção do grau de Bacharel em Ciência da Computação.
 
 **Orientadora:** Profa. Valeria Menezes Bastos, D.Sc.
 
