@@ -5,6 +5,8 @@
 
 **Data da defesa:** 7 de novembro de 2016
 
+**PDF:** [Monografia](https://github.com/macecchi/monografia-dcc/blob/master/monografia.pdf)
+
 
 ## Resumo
 Em tempos onde diversos dados governamentais passam a ser disponibilizados de maneira transparente para o público, começam a surgir diversas soluções de terceiros que fazem uso desses dados para auxiliar a população. Esses, agora processados e analisados, tornam-se ferramentas de informação nas mãos do cidadão e promovem a fiscalização dos serviços públicos prestados.
